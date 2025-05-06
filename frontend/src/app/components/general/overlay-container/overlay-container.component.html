@@ -1,0 +1,17 @@
+@let ds = dialogs();
+@if (ds.length !== 0) {
+    <div class="dialogs">
+        @for (dialog of ds; track dialog.id) {
+            @if ($index == ds.length - 1) {
+                <div class="background" (click)="dialog.closeRequested.next()"></div>
+            }
+            <div class="dialog-layer">
+                <div class="dialog-layer-padding">
+                    <app-dialog>
+                        <ng-container *ngComponentOutlet="dialog.component; inputs: dialog.inputs;"></ng-container>
+                    </app-dialog>
+                </div>
+            </div>
+        }
+    </div>
+}

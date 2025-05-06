@@ -1,0 +1,13 @@
+<app-tabs>
+    <a routerLink="/corpus/sentences" [class.active]="browserMode() == 'sentences'" draggable="false">Sentences</a>
+    <a routerLink="/corpus/words" [class.active]="browserMode() == 'words'" draggable="false">Words</a>
+</app-tabs>
+
+@switch (browserMode()) {
+    @case ("sentences") {
+        <app-main-sentences-table />
+    }
+    @case ("words") {
+        <app-main-words-table />
+    }
+}

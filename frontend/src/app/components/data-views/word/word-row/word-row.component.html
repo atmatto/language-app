@@ -1,0 +1,88 @@
+@if (isHeader) {
+    <tr class="header">
+<!--        <th style="width: 0;"><input type="checkbox" /></th>-->
+        <th style="width: 0;">Word</th>
+        <th style="width: 0;">Base</th>
+        <th style="min-width: 300px">Definitions</th>
+        <th style="width: 0;">Occurrences (coverage)</th>
+    </tr>
+} @else {
+    @let w = word();
+    @if (w === undefined) {
+        <tr>
+<!--            <td></td>-->
+            <td class="nowrap"><app-skeleton-placeholder>Longword</app-skeleton-placeholder></td>
+            <td class="nowrap"><app-skeleton-placeholder>Baseword</app-skeleton-placeholder></td>
+            <td><app-skeleton-placeholder>The meaning of the word is the meaning of the word.</app-skeleton-placeholder></td>
+            <td class="nowrap"><app-skeleton-placeholder>43 (84.53%)</app-skeleton-placeholder></td>
+        </tr>
+    } @else {
+        <tr>
+<!--            <td><input type="checkbox" /></td>-->
+            <td class="nowrap"><app-language-simple [showName]="false" [languageId]="w.language" /> {{w.text}}</td>
+            <td class="nowrap">
+                @if (w.base === null) {
+                    &mdash;
+                } @else {
+                    <app-word-simple [wordId]="w.base" />
+                }
+            </td>
+            <td>
+<!--                @let definitions = this.getDefinitions();-->
+<!--                @if (definitions === undefined) {-->
+<!--                    <app-skeleton-placeholder>The meaning of the word is the meaning of the word.</app-skeleton-placeholder>-->
+<!--                } @else {-->
+<!--                    @if (definitions.length === 0) {-->
+<!--                        &mdash;-->
+<!--                    } @else {-->
+<!--                        <table class="plain">-->
+<!--                            @for (defId of definitions; track defId) {-->
+<!--                                @let def = this.getSentence(defId);-->
+<!--                                @if (def === undefined) {-->
+<!--                                    <tr><td colspan="2"><app-skeleton-placeholder>The meaning of the word is the meaning of the word.</app-skeleton-placeholder></td></tr>-->
+<!--                                } @else {-->
+<!--                                    <tr><td>[L{{def.language}}]</td><td>{{def.text}}</td></tr>-->
+<!--                                }-->
+<!--                            }-->
+<!--                        </table>-->
+<!--                    }-->
+<!--                }-->
+                @let definitions = this.getDefinitions();
+                @if (definitions === undefined) {
+                    <app-skeleton-placeholder>The meaning of the word is the meaning of the word.</app-skeleton-placeholder>
+                } @else {
+                    @if (definitions.length === 0) {
+                        &mdash;
+                    } @else {
+                        <ul>
+                            @for (defId of definitions; track defId) {
+                                <li><app-sentence-simple [sentenceId]="defId" [showFlag]="true"/></li>
+                            }
+                        </ul>
+                    }
+                }
+            </td>
+            <td class="nowrap">
+                {{w.examples.length}}
+                <!-- TODO coverage, also count occurrences of other forms of the same word -->
+                <!--43 (84.53%)-->
+            </td>
+        </tr>
+        @if (extended()) {
+            <tr>
+<!--                <td></td>-->
+                <td colspan="4">
+                    <dl class="attributes">
+                        <div><dt>Added</dt><dd>{{w.created.timestamp}} ({{w.created.user}})</dd></div>
+                        <div><dt>Modified</dt><dd>{{w.modified.timestamp}} ({{w.modified.user}})</dd></div>
+                        <div><dt>Reviewed</dt><dd>@if (w.reviewed === null) { &mdash } @else {{{w.reviewed.timestamp}} ({{w.reviewed.user}})}</dd></div>
+                        <div><dt>ID</dt><dd>{{w.id}}</dd></div>
+                        @let provenance = w.provenance.charAt(0).toUpperCase() + w.provenance.substring(1);
+                        <!-- TODO: Make a function for getting the user-friendly version of provenance -->
+                        <div><dt>Provenance</dt><dd>{{provenance}}</dd></div>
+                    </dl>
+                </td>
+            </tr>
+        }
+    }
+}

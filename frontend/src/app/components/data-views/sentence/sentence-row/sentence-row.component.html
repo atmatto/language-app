@@ -1,0 +1,31 @@
+@if (isHeader) {
+    <tr class="header">
+<!--        <th style="width: 0;"><input type="checkbox" /></th>-->
+        <th style="width: 0;">Focused word</th>
+        <th style="min-width: 300px">Sentence and translations</th>
+    </tr>
+} @else {
+    @let s = sentence();
+    @if (s === undefined) {
+        <tr>
+            <td><app-skeleton-placeholder>Focusword</app-skeleton-placeholder></td>
+            <td><app-skeleton-placeholder>The text of the sentence is the text of the sentence.</app-skeleton-placeholder></td>
+        </tr>
+    } @else {
+        <tr>
+<!--            <td><input type="checkbox" /></td>-->
+            <td>
+                @if (s.focus === null) {
+                    &mdash;
+                } @else {
+                    <app-word-simple [wordId]="s.focus" />
+                }
+            </td>
+            <td>
+                <ul>
+                    <li><app-language-simple [showName]="false" [languageId]="s.language" /> {{s.text}}</li>
+                </ul>
+            </td>
+        </tr>
+    }
+}

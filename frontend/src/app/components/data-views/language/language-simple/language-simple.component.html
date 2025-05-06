@@ -1,0 +1,16 @@
+@let id = languageId();
+@if (id === undefined) {
+    <app-skeleton-placeholder>Loading language</app-skeleton-placeholder>
+} @else {
+    @if (showFlag()) {
+        <span class="flag">
+            {{languagesService.getIcon(id)}}
+            @if (showName()) {
+                &ngsp;
+            }
+        </span>
+    }
+    @if (showName()) {
+        <span class="name">{{languagesService.getName(id)}}</span>
+    }
+}

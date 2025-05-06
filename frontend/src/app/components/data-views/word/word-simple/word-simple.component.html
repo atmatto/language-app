@@ -1,0 +1,9 @@
+@let w = word();
+@if (w === undefined) {
+    <app-skeleton-placeholder>Loading</app-skeleton-placeholder>
+} @else {
+    @if (showFlag()) {
+        <app-language-simple [showName]="false" [languageId]="w.language" />
+    }
+    {{w.text}}
+}

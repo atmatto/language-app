@@ -1,0 +1,64 @@
+@let s = sentence();
+@if (s === undefined) {
+    <app-skeleton-placeholder>TODO better skeleton</app-skeleton-placeholder>
+} @else {
+    <header>
+        <div>
+            <div><app-language-simple [languageId]="s.language" /></div>
+            <h2>{{s.text}}</h2>
+        </div>
+        <div class="buttons">
+            <button>Cancel</button>
+            <button class="action">Save</button>
+        </div>
+    </header>
+    <h3>Focused word</h3>
+    @if (s.focus === null) {
+        &mdash;
+    } @else {
+        <app-word-simple [wordId]="s.focus" />
+    }
+    @if (s.definitionOf.length !== 0) {
+        <h3>Used as definition for</h3>
+        <app-words-table [wordIds]="s.definitionOf" />
+    }
+    <h3>Translations</h3>
+    <app-sentences-table [sentenceIds]="s.translations" />
+    <h3>Words</h3>
+    <app-words-table [wordIds]="s.words" />
+    <h3>Attribution</h3>
+    <div class="textarea-wrapper">
+        <input type="text" [value]="s.attribution" readonly />
+    </div>
+    <h3>Note</h3>
+    <div class="textarea-wrapper">
+        <textarea readonly>{{s.note}}</textarea>
+    </div>
+    <div class="row">
+        <div>
+            <h3>Provenance</h3>
+            <div><app-provenance [value]="s.provenance" /></div>
+        </div>
+        <div>
+            <h3>Ignored</h3>
+            @let ignored = s.ignored.toString();
+            <div>{{ignored.at(0)?.toUpperCase() + ignored.substring(1)}}</div>
+        </div>
+        <div>
+            <h3>Identifier</h3>
+            <div>{{s.id}}</div>
+        </div>
+        <div>
+            <h3>Created</h3>
+            <div><app-history-property [value]="s.created" /></div>
+        </div>
+        <div>
+            <h3>Modified</h3>
+            <div><app-history-property [value]="s.modified" /></div>
+        </div>
+        <div>
+            <h3>Reviewed</h3>
+            <div><app-history-property [value]="s.reviewed ?? undefined" /></div>
+        </div>
+    </div>
+}

@@ -1,0 +1,166 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #f5f5f5;
+    --light-bg: #fcfcfc;
+    --light-hover-bg: #f8f8f8;
+    --dark-bg: #f6f6f6;
+    --fg: black;
+    --dim-fg: #5b5b5d;
+    --main-bg: #fcfcfc;
+    --main-bd: #dcdcdc;
+    --topbar-bg: #f5f5f5;
+    --topbar-link-bg-hover: #efefef;
+    --topbar-link-bg-active: #e8e8e8;
+    --button-fg: #2f2f31;
+    --button-bg: white;
+    --button-bd: #cfcfcf;
+    --button-hover-bg: #f6f6f6;
+    --button-action-fg: white;
+    --button-action-bg: #6d78d5;
+    --button-action-bd: #6570c8;
+    --button-action-hover-bg: #6570c8;
+    --input-bg: #fcfcfc;
+    --input-hover-bd: #b9b9b9;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: #090909;
+        --light-bg: #101012;
+        --light-hover-bg: #151618;
+        --dark-bg: #18191b;
+        --fg: white;
+        --dim-fg: #97979a;
+        --main-bg: #101012;
+        --main-bd: #23252a;
+        --topbar-bg: #090909;
+        --topbar-link-bg-hover: #1e1e20;
+        --topbar-link-bg-active: #1b1d21;
+        --button-fg: #e3e4e7;
+        --button-bg: #1e2025;
+        --button-bd: #2c2e33;
+        --button-hover-bg: #26282f;
+        --button-action-fg: white;
+        --button-action-bg: #5e6ad2;
+        --button-action-bd: #6d78e7;
+        --button-action-hover-bg: #6d78e7;
+        --input-bg: #101012;
+        --input-hover-bd: #3b404d;
+    }
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    margin: 0;
+    color: var(--fg, black);
+    background-color: var(--bg, lightgrey);
+    height: 100%;
+    overflow-y: hidden;
+}
+
+@media (max-width: 500px) {
+    body {
+        font-size: 0.85rem;
+    }
+}
+
+button.action {
+    --button-fg: var(--button-action-fg, white);
+    --button-bg: var(--button-action-bg, blue);
+    --button-bd: var(--button-action-bd, black);
+    --button-hover-bg: var(--button-action-hover-bg, navy);
+}
+
+button.large {
+    font-size: 0.9em;
+    padding: 6px 14px;
+}
+
+button {
+    all: unset;
+    color: var(--button-fg, black);
+    background-color: var(--button-bg, grey);
+    border: 1px solid var(--button-bd, black);
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 0.85em;
+    padding: 4px 10px;
+    user-select: none;
+    cursor: pointer;
+}
+
+button:hover:not(:active) {
+    background-color: var(--button-hover-bg, white);
+}
+
+input[type="text"] {
+    all: unset;
+    color: var(--button-fg, black);
+    background: var(--input-bg, white);
+    border: 1px solid var(--button-bd, black);
+    border-radius: 5px;
+    font-size: 0.85em;
+    padding: 4px 10px;
+}
+
+input[type="text"]:hover {
+    border-color: var(--input-hover-bd, grey);
+}
+
+input[type="text"]:focus {
+    border-color: var(--button-action-bg, blue);
+}
+
+select {
+    /*all: unset;*/
+    color: var(--button-fg, black);
+    background: var(--input-bg, white);
+    border: 1px solid var(--button-bd, black);
+    border-radius: 5px;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 0.85em;
+    padding: 4px 10px;
+    outline: none;
+}
+
+select:hover {
+    border-color: var(--input-hover-bd, grey);
+}
+
+select:open {
+    border-color: var(--button-action-bg, blue);
+}
+
+textarea {
+    all: unset;
+    display: block;
+    width: auto;
+    color: var(--button-fg, black);
+    background: var(--input-bg, white);
+    border: 1px solid var(--button-bd, black);
+    border-radius: 5px;
+    font-size: 0.85em;
+    padding: 4px 10px;
+    resize: vertical;
+    min-height: 3lh;
+}
+
+textarea:hover {
+    border-color: var(--input-hover-bd, grey);
+}
+
+textarea:focus {
+    border-color: var(--button-action-bg, blue);
+}

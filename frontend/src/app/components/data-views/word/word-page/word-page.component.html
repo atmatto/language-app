@@ -1,0 +1,68 @@
+@let w = word();
+@if (w === undefined) {
+    <app-skeleton-placeholder>TODO better skeleton</app-skeleton-placeholder>
+} @else {
+    <header>
+        <div>
+            <div><app-language-simple [languageId]="w.language" /></div>
+            <h2>{{w.text}}</h2>
+        </div>
+        <div class="buttons">
+            <button>Cancel</button>
+            <button class="action">Save</button>
+        </div>
+    </header>
+    <h3>Definitions</h3>
+<!--    <ul style="list-style: none; padding: 0;">-->
+<!--        @for (defId of w.definitions; track defId) {-->
+<!--            <li><app-sentence-simple [sentenceId]="defId" [showFlag]="true"/></li>-->
+<!--        }-->
+<!--    </ul>-->
+    <app-sentences-table [sentenceIds]="w.definitions" />
+    <h3>Base</h3>
+    @if (w.base === null) {
+        &mdash;
+    } @else {
+        <app-word-simple [wordId]="w.base" />
+    }
+    <h3>Forms</h3>
+    <app-words-table [wordIds]="w.forms" />
+    <h3>Examples</h3>
+<!--    <ul style="list-style: none; padding: 0;">-->
+<!--        @for (exampleId of w.examples; track exampleId) {-->
+<!--            <li><app-sentence-simple [sentenceId]="exampleId" [showFlag]="true"/></li>-->
+<!--        }-->
+<!--    </ul>-->
+    <app-sentences-table [sentenceIds]="w.examples" />
+    <h3>Note</h3>
+    <div class="textarea-wrapper">
+        <textarea readonly>{{w.note}}</textarea>
+    </div>
+    <div class="row">
+        <div>
+            <h3>Provenance</h3>
+            <div><app-provenance [value]="w.provenance" /></div>
+        </div>
+        <div>
+            <h3>Ignored</h3>
+            @let ignored = w.ignored.toString();
+            <div>{{ignored.at(0)?.toUpperCase() + ignored.substring(1)}}</div>
+        </div>
+        <div>
+            <h3>Identifier</h3>
+            <div>{{w.id}}</div>
+        </div>
+        <div>
+            <h3>Created</h3>
+            <div><app-history-property [value]="w.created" /></div>
+        </div>
+        <div>
+            <h3>Modified</h3>
+            <div><app-history-property [value]="w.modified" /></div>
+        </div>
+        <div>
+            <h3>Reviewed</h3>
+            <div><app-history-property [value]="w.reviewed ?? undefined" /></div>
+        </div>
+    </div>
+}

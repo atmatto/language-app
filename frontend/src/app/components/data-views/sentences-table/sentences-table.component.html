@@ -1,0 +1,106 @@
+@let ids = sentenceIds();
+<!--<div class="header-control">-->
+<!--    <button class="action">Add</button>-->
+<!--    <button>Delete</button>-->
+<!--    <button>Sort</button>-->
+<!--    <input type="text" placeholder="Search" />-->
+<!--    <button>Filter</button>-->
+<!--    <button>Hide details</button>-->
+<!--</div>-->
+<!--<div class="table-container">-->
+<app-table>
+    <app-table-control>
+    </app-table-control>
+    <thead app-sentence-row></thead>
+    @if (ids === undefined) {
+        <tbody app-sentence-row></tbody>
+    } @else {
+        @for (id of ids; track id) {
+            <tbody app-sentence-row [sentenceId]="id" (click)="sentenceClicked.emit(id)"></tbody>
+        }
+    }
+
+        <!--        <thead>-->
+<!--            <tr class="header">-->
+<!--                <th style="width: 0;"><input type="checkbox" /></th>-->
+<!--                <th style="width: 0;">Focused word</th>-->
+<!--                <th style="min-width: 300px">Sentence and translations</th>-->
+<!--            </tr>-->
+<!--        </thead>-->
+<!--        @for (sentence of sentences(); track sentence.id) {-->
+<!--            <tbody>-->
+<!--                <tr>-->
+<!--                    <td><input type="checkbox" /></td>-->
+<!--                    <td>{{sentence.focus}}</td>-->
+<!--                    <td>-->
+<!--                        <table class="plain">-->
+<!--                            <tr><td>{{sentence.language}}</td><td>{{sentence.text}}</td></tr>-->
+<!--                        </table>-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--            </tbody>-->
+<!--        }-->
+<!--&lt;!&ndash;            <tbody>&ndash;&gt;-->
+<!--&lt;!&ndash;                <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <td><input type="checkbox" /></td>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <td>Zeile</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <table class="plain">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <tr><td>🇩🇪</td><td>So würde die Zeile in einer vereinfachten Tabelle aussehen.</td></tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <tr><td>🇬🇧</td><td>This is how the row would look like in a simplified table.</td></tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </table>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </td>&ndash;&gt;-->
+<!--&lt;!&ndash;                </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;            </tbody>&ndash;&gt;-->
+<!--&lt;!&ndash;            <tbody>&ndash;&gt;-->
+<!--&lt;!&ndash;                <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <td><input type="checkbox" /></td>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <td>wirklich</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <table class="plain">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <tr><td>🇩🇪</td><td>Ich mag deinen Pullover wirklich sehr.</td></tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <tr><td>🇬🇧</td><td>I really like your sweater.</td></tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </table>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </td>&ndash;&gt;-->
+<!--&lt;!&ndash;                </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <td></td>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <td colspan="2">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <dl class="attributes">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div><dt>Added</dt><dd>2025-03-23 (Vortarulo)</dd></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div><dt>Modified</dt><dd>2025-04-05 (Biderl)</dd></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div><dt>Reviewed</dt><dd>&mdash;</dd></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div><dt>ID</dt><dd>13178519</dd></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div><dt>Attribution</dt><dd>CC BY 2.0 FR, tatoeba.org, Vortarulo</dd></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div><dt>Provenance</dt><dd>Batch import</dd></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </dl>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </td>&ndash;&gt;-->
+<!--&lt;!&ndash;                </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;            </tbody>&ndash;&gt;-->
+    <app-table-footer>
+        @if (ids === undefined) {
+            Loading...
+        } @else {
+            {{ids.length}} {{ids.length === 1 ? "sentence" : "sentences"}}
+        }
+    </app-table-footer>
+</app-table>
+<!--</div>-->
+<!--<div class="footer-control">-->
+<!--    @if (ids === undefined) {-->
+<!--        Loading...-->
+<!--    } @else {-->
+<!--        {{ids.length}} {{ids.length === 1 ? "row" : "rows"}}-->
+<!--    }-->
+<!--    &lt;!&ndash;    <div>Rows per page</div>&ndash;&gt;-->
+<!--&lt;!&ndash;    <select>&ndash;&gt;-->
+<!--&lt;!&ndash;        <option>10</option>&ndash;&gt;-->
+<!--&lt;!&ndash;        <option>50</option>&ndash;&gt;-->
+<!--&lt;!&ndash;        <option>200</option>&ndash;&gt;-->
+<!--&lt;!&ndash;    </select>&ndash;&gt;-->
+<!--&lt;!&ndash;    <div>1–1 of 1</div>&ndash;&gt;-->
+<!--&lt;!&ndash;    <button>First</button>&ndash;&gt;-->
+<!--&lt;!&ndash;    <button>Previous</button>&ndash;&gt;-->
+<!--&lt;!&ndash;    <button>Next</button>&ndash;&gt;-->
+<!--&lt;!&ndash;    <button>Last</button>&ndash;&gt;-->
+<!--</div>-->

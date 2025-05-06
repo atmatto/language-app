@@ -1,0 +1,12 @@
+#not-found {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+    height: 100%;
+    user-select: none;
+}
+
+#not-found p:nth-child(2) {
+    color: var(--dim-fg, grey);
+}

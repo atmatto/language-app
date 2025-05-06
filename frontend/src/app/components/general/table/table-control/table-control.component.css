@@ -1,0 +1,9 @@
+:host {
+    background: var(--dark-bg, grey);
+    padding: 8px 12px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}

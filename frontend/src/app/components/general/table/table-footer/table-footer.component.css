@@ -1,0 +1,14 @@
+:host {
+    background: var(--dark-bg, grey);
+    padding: 8px 12px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    margin-top: auto;
+    position: sticky;
+    bottom: 0;
+    border-top: 1px solid var(--main-bd, black);
+}

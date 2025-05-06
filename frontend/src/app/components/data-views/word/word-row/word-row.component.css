@@ -1,0 +1,57 @@
+.attributes {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2px 24px;
+    margin: 0;
+    padding: 0;
+}
+
+.attributes div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: baseline;
+}
+
+.attributes dt {
+    all: unset;
+    font-size: 0.85em;
+    font-weight: 500;
+    color: var(--dim-fg, grey);
+}
+
+.attributes dd {
+    all: unset;
+}
+
+.nowrap {
+    text-wrap: nowrap;
+}
+
+/*table.plain {*/
+/*    border-spacing: 0;*/
+/*}*/
+
+/*table.plain th {*/
+/*    font-size: 0.85em;*/
+/*    font-weight: 500;*/
+/*    color: var(--dim-fg, grey);*/
+/*}*/
+
+/*table.plain th, table.plain td {*/
+/*    vertical-align: baseline;*/
+/*    padding-left: 8px;*/
+/*    text-align: left;*/
+/*}*/
+
+/*table.plain th:first-child, table.plain td:first-child {*/
+/*    padding-left: 0;*/
+/*}*/
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}

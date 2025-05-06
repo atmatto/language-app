@@ -1,0 +1,63 @@
+:host {
+    display: block;
+}
+
+header {
+    position: sticky;
+    z-index: 2;
+    top: 0;
+    background: var(--light-bg, white);
+    padding: 12px 12px;
+    margin: -12px -12px 0;
+    border-bottom: 1px solid var(--main-bd, grey);
+    border-radius: 6px 6px 0 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+header > :first-child {
+    margin-right: auto;
+}
+
+header .buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+h2 {
+    font-size: 2em;
+    font-weight: 500;
+    margin: 6px 0 0;
+}
+
+h3 {
+    font-size: inherit;
+    font-weight: 500;
+    color: var(--dim-fg, grey);
+    margin-top: 18px;
+    margin-bottom: 6px;
+    user-select: none;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /*justify-content: space-between;*/
+    gap: 0 24px;
+}
+
+.textarea-wrapper { /* TODO make a component for this, maybe with auto resize */
+    display: flex;
+    flex-direction: column;
+}
+
+:host app-words-table, :host app-sentences-table {
+    min-height: 100px;
+    max-height: 40vh;
+}

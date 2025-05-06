@@ -1,0 +1,9 @@
+@let s = sentence();
+@if (s === undefined) {
+    <app-skeleton-placeholder>The text of the sentence is the text of the sentence.</app-skeleton-placeholder>
+} @else {
+    @if (showFlag()) {
+        <app-language-simple [showName]="false" [languageId]="s.language" />
+    }
+    {{s.text}}
+}

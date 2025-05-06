@@ -1,0 +1,35 @@
+:host {
+    display: flex;
+    flex-direction: row;
+    padding: 6px 12px;
+    margin: 0;
+    gap: 6px;
+    color: var(--dim-fg, black);
+    font-size: 0.9em;
+}
+
+:host::ng-deep > * {
+    all: inherit;
+    display: block;
+    background-color: var(--main-bg, white);
+    border: 1px solid var(--main-bd, black);
+    border-radius: 5px;
+    padding: 6px 12px;
+    font-weight: 500;
+    cursor: pointer;
+    user-select: none;
+}
+
+:host::ng-deep > *:hover {
+    background-color: var(--topbar-bg, lightgrey);
+}
+
+:host::ng-deep > *:active, :host::ng-deep > *.active {
+    background-color: var(--topbar-link-bg-hover, grey);
+    color: var(--fg, black);
+}
+
+:host::ng-deep a {
+    color: inherit;
+    text-decoration: none;
+}

@@ -1,0 +1,79 @@
+@let ids = wordIds();
+<app-table>
+    <app-table-control>
+<!--        <button>Add</button>-->
+    <!--    <button>Delete</button>-->
+    <!--    <button>Sort</button>-->
+    <!--    <input type="text" placeholder="Search" />-->
+    <!--    <button>Filter</button>-->
+    <!--    <button>Hide details</button>-->
+    </app-table-control>
+    <thead app-word-row></thead>
+    @if (ids === undefined) {
+        <tbody app-word-row></tbody>
+    } @else {
+        @for (id of ids; track id) {
+            <tbody app-word-row [wordId]="id" (click)="wordClicked.emit(id)"></tbody>
+        }
+    }
+<!--    <tbody app-word-row [wordId]="1"></tbody>-->
+<!--    <tbody app-word-row [wordId]="2"></tbody>-->
+<!--    <tbody app-word-row [wordId]="3"></tbody>-->
+<!--    <tbody app-word-row [wordId]="4"></tbody>-->
+<!--    <tbody app-word-row [wordId]="5"></tbody>-->
+<!--    <tbody app-word-row [wordId]="6"></tbody>-->
+<!--    <tbody app-word-row [wordId]="7"></tbody>-->
+<!--    <tbody app-word-row [wordId]="8"></tbody>-->
+<!--    @for (i of [].constructor(3); track i) {-->
+<!--        <tbody>-->
+<!--            <tr>-->
+<!--                <td><input type="checkbox" /></td>-->
+<!--                <td class="nowrap">🇩🇪 Zeile</td>-->
+<!--                <td class="nowrap">&mdash;</td>-->
+<!--                <td>-->
+<!--                    <table class="plain">-->
+<!--                        <tr><td>🇩🇪</td><td>Die horizontalen Einträge einer Matrix, eines Arrays oder einer Tabelle.</td></tr>-->
+<!--                        <tr><td>🇬🇧</td><td>Line, row.</td></tr>-->
+<!--                    </table>-->
+<!--                </td>-->
+<!--                <td class="nowrap">43 (84.53%)</td>-->
+<!--            </tr>-->
+<!--        </tbody>-->
+<!--    }-->
+<!--    @for (i of [].constructor(3); track i) {-->
+<!--        <tbody>-->
+<!--        <tr>-->
+<!--            <td><input type="checkbox" /></td>-->
+<!--            <td class="nowrap">🇩🇪 Zeile</td>-->
+<!--            <td class="nowrap">&mdash;</td>-->
+<!--            <td>-->
+<!--                <table class="plain">-->
+<!--                    <tr><td>🇩🇪</td><td>Die horizontalen Einträge einer Matrix, eines Arrays oder einer Tabelle.</td></tr>-->
+<!--                    <tr><td>🇬🇧</td><td>Line, row.</td></tr>-->
+<!--                </table>-->
+<!--            </td>-->
+<!--            <td class="nowrap">43 (84.53%)</td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td></td>-->
+<!--            <td colspan="4">-->
+<!--                <dl class="attributes">-->
+<!--                    <div><dt>Added</dt><dd>2025-03-23 (Vortarulo)</dd></div>-->
+<!--                    <div><dt>Modified</dt><dd>2025-04-05 (Biderl)</dd></div>-->
+<!--                    <div><dt>Reviewed</dt><dd>&mdash;</dd></div>-->
+<!--                    <div><dt>ID</dt><dd>13178519</dd></div>-->
+<!--                    <div><dt>Provenance</dt><dd>Manual</dd></div>-->
+<!--                </dl>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--        </tbody>-->
+<!--    }-->
+    <app-table-footer>
+        @if (ids === undefined) {
+            Loading...
+        } @else {
+            {{ids.length}} {{ids.length === 1 ? "word" : "words"}}
+        }
+<!--        <app-table-paging-controls />-->
+    </app-table-footer>
+</app-table>
