@@ -1,0 +1,86 @@
+@startuml
+
+package Content {
+	class Language {
+		name
+		code
+		emoji/svg?
+	}
+
+	abstract UserContent {
+		{field} ignored (stored but forcibly not used)
+		text
+		added, updated, reviewed by + time
+	}
+
+	enum ContentSource {
+		{field} MANUAL
+		{field} AUTO (automatically extracted from a sentence)
+		{field} BATCH
+		{field} DERIVATIVE (definition, translation, ...)
+		{method} (can be manually changed after verification)
+	}
+
+
+	class Word {
+	}
+
+	note left of Word
+		has case but uses case insensitive comparison
+	end note
+
+	class Sentence {
+		{field} attribution (source, copyright)
+	}
+
+	Language <-> UserContent
+	UserContent <|-- Sentence
+	UserContent <|-- Word
+	Sentence "examples" <---> "words" Word
+	Word ---> "definitions" Sentence
+	Sentence <---> "focus" Word
+	Sentence --> "translations" Sentence
+	Word "base" <--> "forms" Word
+	UserContent *- ContentSource
+
+	note as n21542017
+		TODO:
+		* long text samples
+		* collections
+		* what about separable/compound words?
+		* word frequency
+	end note
+	n21542017 .[hidden]u. UserContent
+}
+
+package Users {
+	class User {
+		username
+		selectedLanguage?
+		isLearner
+		isContentManager
+		isReviewer
+	}
+}
+
+package Learning {
+	' TODO: https://expertium.github.io/Algorithm.html
+	' https://github.com/open-spaced-repetition/fsrs4anki/wiki/The-Algorithm
+	abstract Progress {
+	}
+
+	class Repetition {
+	}
+
+	class WordProgress {
+	}
+
+	class SentenceProgress {
+	}
+
+	Progress <|-- WordProgress
+	Progress <|-- SentenceProgress
+	Progress "*" <-> "*" Repetition
+}
+
+@enduml
