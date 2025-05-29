@@ -1,0 +1,12 @@
+curl -w '\n' localhost:8080/api/v1/language -X POST --json '{"name":"English","icon":"EN","code":"en"}'
+curl -w '\n' localhost:8080/api/v1/word -X POST --json '{"language": 1, "provenance": "MANUAL", "text": "word1"}'
+curl -w '\n' localhost:8080/api/v1/word -X POST --json '{"language": 1, "provenance": "MANUAL", "text": "word2"}'
+curl -w '\n' localhost:8080/api/v1/sentence -X POST --json '{"language": 1, "provenance": "MANUAL", "text": "sentence1"}'
+curl -w '\n' localhost:8080/api/v1/sentence -X POST --json '{"language": 1, "provenance": "MANUAL", "text": "sentence2"}'
+curl -w '\n' localhost:8080/api/v1/word/1 -X PATCH --json '{"examples": [1], "forms": [2], "definitions": [2]}'
+curl -w '\n' localhost:8080/api/v1/sentence/1 -X PATCH --json '{"focus": 1, "translations": [2]}'
+curl -w '\n' localhost:8080/api/v1/word -X GET | jq
+curl -w '\n' localhost:8080/api/v1/sentence -X GET | jq
+
+curl -w '\n' localhost:8080/api/v1/sentence/1 -X PUT --json '{"language": 1, "provenance": "MANUAL", "text": "sentence1-mod"}'
+curl -w '\n' localhost:8080/api/v1/sentence/1 -X DELETE
