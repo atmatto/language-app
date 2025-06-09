@@ -15,7 +15,7 @@ public class LanguageService {
 	}
 
 	public Language create(Language l) {
-		return languageRepository.save(l);
+		return languageRepository.saveAndFlush(l);
 	}
 
 	public List<Language> getAll() {
@@ -28,7 +28,7 @@ public class LanguageService {
 
 	public Optional<Language> replace(Language l) {
 		try {
-			return Optional.of(languageRepository.save(l));
+			return Optional.of(languageRepository.saveAndFlush(l));
 		} catch (OptimisticLockingFailureException e) {
 			return Optional.empty();
 		}

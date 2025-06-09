@@ -1,3 +1,6 @@
 These tests were created to aid in initial development,
 are not perfect unit tests, and do not cover the whole
 feature set.
+
+TODO: Current tests are very cumbersome, try rest-assured?
+TODO: Test auth?

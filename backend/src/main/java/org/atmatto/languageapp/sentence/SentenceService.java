@@ -16,7 +16,7 @@ public class SentenceService {
 	}
 
 	public Sentence create(Sentence s) {
-		return sentenceRepository.save(s);
+		return sentenceRepository.saveAndFlush(s);
 	}
 
 	public List<Sentence> getAll() {
@@ -38,7 +38,7 @@ public class SentenceService {
 
 	public Optional<Sentence> replace(Sentence s) {
 		try {
-			return Optional.of(sentenceRepository.save(s));
+			return Optional.of(sentenceRepository.saveAndFlush(s));
 		} catch (OptimisticLockingFailureException e) {
 			return Optional.empty();
 		}

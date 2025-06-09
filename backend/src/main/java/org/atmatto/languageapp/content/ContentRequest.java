@@ -20,7 +20,7 @@ public record ContentRequest(
 		if (note != null) c.setNote(note);
 		if (provenance != null) c.setProvenance(provenance);
 		if (ignored != null) c.setIgnored(ignored);
-		if (reviewed != null) c.setReviewed(reviewed ? new HistoryProperty(user) : null);
+		if (reviewed != null && user.isReviewer()) c.setReviewed(reviewed ? new HistoryProperty(user) : null);
 
 		if (c.getCreated() == null) c.setCreated(new HistoryProperty(user));
 		c.setModified(new HistoryProperty(user));

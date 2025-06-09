@@ -3,6 +3,7 @@ package org.atmatto.languageapp.word;
 import org.atmatto.languageapp.error.ConflictException;
 import org.atmatto.languageapp.error.NotFoundException;
 import org.atmatto.languageapp.language.LanguageService;
+import org.atmatto.languageapp.security.CurrentUser;
 import org.atmatto.languageapp.sentence.SentenceService;
 import org.atmatto.languageapp.user.UserService;
 import org.springframework.http.HttpStatus;
@@ -30,7 +31,7 @@ public class WordController {
 	@PostMapping
 	@Transactional
 	public WordResponse create(@RequestBody WordRequest wr) {
-		return new WordResponse(wordService.create(wr.toWord(null, languageService, wordService, sentenceService, userService.getTestUser())));
+		return new WordResponse(wordService.create(wr.toWord(null, languageService, wordService, sentenceService, CurrentUser.getOrThrow())));
 	}
 
 	@GetMapping
@@ -52,7 +53,7 @@ public class WordController {
 		Word w = wordService.get(id).orElseThrow(() -> new NotFoundException("No such ID"));
 		wordService.unlink(w).orElseThrow(() -> new ConflictException("Failed to unlink old associations"));
 		return new WordResponse(
-			wordService.replace(wr.toWord(id, languageService, wordService, sentenceService, userService.getTestUser()))
+			wordService.replace(wr.toWord(id, languageService, wordService, sentenceService, CurrentUser.getOrThrow()))
 				.orElseThrow(() -> new NotFoundException("No such ID"))
 		);
 	}
@@ -63,7 +64,7 @@ public class WordController {
 		return new WordResponse(
 			wordService.replace(
 				wordService.get(id)
-					.map(w -> wr.modify(w, languageService, wordService, sentenceService, userService.getTestUser()))
+					.map(w -> wr.modify(w, languageService, wordService, sentenceService, CurrentUser.getOrThrow()))
 					.orElseThrow(() -> new NotFoundException("No such ID"))
 			).orElseThrow(() -> new ConflictException("Failed to replace"))
 		);

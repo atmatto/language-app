@@ -3,6 +3,7 @@ package org.atmatto.languageapp.language;
 import org.atmatto.languageapp.error.ConflictException;
 import org.atmatto.languageapp.error.NotFoundException;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,6 +18,7 @@ public class LanguageController {
 	}
 
 	@PostMapping
+	@PreAuthorize("hasRole('CONTENT_ADMIN')")
 	public LanguageResponse create(@RequestBody LanguageRequest lr) {
 		return new LanguageResponse(languageService.create(lr.toLanguage(null)));
 	}
@@ -35,6 +37,7 @@ public class LanguageController {
 	}
 
 	@PutMapping("/{id}")
+	@PreAuthorize("hasRole('CONTENT_ADMIN')")
 	public LanguageResponse replace(@PathVariable Long id, @RequestBody LanguageRequest lr) {
 		return new LanguageResponse(
 			languageService.replace(lr.toLanguage(id))
@@ -43,6 +46,7 @@ public class LanguageController {
 	}
 
 	@PatchMapping("/{id}")
+	@PreAuthorize("hasRole('CONTENT_ADMIN')")
 	public LanguageResponse modify(@PathVariable Long id, @RequestBody LanguageRequest lr) {
 		return new LanguageResponse(
 			languageService.replace(
@@ -55,6 +59,7 @@ public class LanguageController {
 
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
+	@PreAuthorize("hasRole('CONTENT_ADMIN')")
 	public void delete(@PathVariable Long id) {
 		languageService.delete(
 			languageService.get(id)

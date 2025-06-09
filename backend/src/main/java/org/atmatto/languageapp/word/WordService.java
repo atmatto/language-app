@@ -16,7 +16,7 @@ public class WordService {
 	}
 
 	public Word create(Word w) {
-		return wordRepository.save(w);
+		return wordRepository.saveAndFlush(w);
 	}
 
 	public List<Word> getAll() {
@@ -38,7 +38,7 @@ public class WordService {
 
 	public Optional<Word> replace(Word w) {
 		try {
-			return Optional.of(wordRepository.save(w));
+			return Optional.of(wordRepository.saveAndFlush(w));
 		} catch (OptimisticLockingFailureException e) {
 			return Optional.empty();
 		}
