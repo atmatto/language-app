@@ -38,4 +38,8 @@ export class OverlaysService {
             return d;
         }
     }
+
+    openSimpleAlert(title: String, detail: String) {
+        window.alert(`${title}\n\n${detail}`); // TODO
+    }
 }

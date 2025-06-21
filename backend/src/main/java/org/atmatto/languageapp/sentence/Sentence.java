@@ -18,23 +18,23 @@ public class Sentence extends Content {
 	@NotNull
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
 	@JoinTable(name = "sentence_words")
-	Set<Word> words = new HashSet<>();
+	private Set<Word> words = new HashSet<>();
 
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
-	Word focus = null;
+	private Word focus = null;
 
 	@NotNull
 	@ManyToMany(/*mappedBy = "translations", */ fetch = FetchType.LAZY, cascade = CascadeType.MERGE) // TODO ??
 	@JoinTable(name = "sentence_translations")
-	Set<Sentence> translations = new HashSet<>();
+	private Set<Sentence> translations = new HashSet<>();
 
 	@NotNull
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
 	@JoinTable(name = "word_definitions")
-	Set<Word> definitionOf = new HashSet<>();
+	private Set<Word> definitionOf = new HashSet<>();
 
 	@NotNull
-	String attribution = "";
+	private String attribution = "";
 
 	public void setWords(Set<Word> ws) {
 		new HashSet<>(words).stream()

@@ -17,3 +17,6 @@ curl localhost:8080/api/v1/auth/session -X POST --json '{"username": "myname", "
 curl localhost:8080/api/v1/auth/session/extend -X POST -H "Authentication: Bearer "
 curl localhost:8080/api/v1/auth/account/password -X PUT --json '{"oldPassword": "12345678", "newPassword": "abcdefgh"}' -H "Authentication: Bearer "
 
+* * *
+
+sudo -u postgres pg_dump languageapp -a --inserts --column-inserts | sed '/^--/d' | cat -s

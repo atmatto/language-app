@@ -2,8 +2,14 @@ import { Routes } from '@angular/router';
 import {ErrorPage} from './components/general/error-page/error-page.component';
 import {IndexComponent} from './components/pages/index/index.component';
 import {CorpusBrowserComponent} from './components/pages/corpus/corpus-browser/corpus-browser.component';
+import {SigninComponent} from './components/pages/signin/signin.component';
+import {RegisterComponent} from './components/pages/register/register.component';
+import {SignoutComponent} from './components/pages/signout/signout.component';
 
 export const routes: Routes = [
+    {path: "signin", component: SigninComponent},
+    {path: "register", component: RegisterComponent},
+    {path: "signout", component: SignoutComponent},
     {path: "corpus/words", component: CorpusBrowserComponent, data: {browserMode: "words"}},
     {path: "corpus/sentences", component: CorpusBrowserComponent, data: {browserMode: "sentences"}},
     // {path: "corpus/word/:wordId", component: WordPageComponent},

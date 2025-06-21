@@ -4,7 +4,6 @@ import org.atmatto.languageapp.error.ConflictException;
 import org.atmatto.languageapp.error.NotFoundException;
 import org.atmatto.languageapp.language.LanguageService;
 import org.atmatto.languageapp.security.CurrentUser;
-import org.atmatto.languageapp.user.UserService;
 import org.atmatto.languageapp.word.WordService;
 import org.springframework.http.HttpStatus;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,14 +17,11 @@ public class SentenceController {
 	private final WordService wordService;
 	private final LanguageService languageService;
 	private final SentenceService sentenceService;
-	// TODO: Temp?
-	private final UserService userService;
 
-	public SentenceController(WordService wordService, LanguageService languageService, SentenceService sentenceService, UserService userService) {
+	public SentenceController(WordService wordService, LanguageService languageService, SentenceService sentenceService) {
 		this.wordService = wordService;
 		this.languageService = languageService;
 		this.sentenceService = sentenceService;
-		this.userService = userService;
 	}
 
 	@PostMapping

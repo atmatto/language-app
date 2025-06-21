@@ -1,0 +1,20 @@
+<h1>Create your account</h1>
+<form #f="ngForm" (ngSubmit)="submit(f.form.value)" ngNativeValidate>
+    <label for="username">User name</label>
+    <input type="text" id="username" name="username" ngModel required minlength="3" maxlength="20" />
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" ngModel autocomplete="new-password" required minlength="8" maxlength="100" />
+    <label for="confirmPassword">Confirm password</label>
+    <input type="password" id="confirmPassword" name="confirmPassword" ngModel autocomplete="new-password" required minlength="8" maxlength="100" />
+    @if (passwordMatchError()) {
+        <p class="error">Passwords do not match</p>
+    }
+    <button>
+        @if (submitted()) {
+            <app-skeleton-placeholder>Register</app-skeleton-placeholder>
+        } @else {
+            Register
+        }
+    </button>
+</form>
+<p>Already have an account? <a routerLink="/signin">Sign in</a></p>

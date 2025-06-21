@@ -1,0 +1,14 @@
+@let u = user();
+@if (u === null) {
+    <a routerLink="/signin">Sign in</a>
+} @else {
+    @if (u === undefined) {
+        <app-skeleton-placeholder>Loading the user</app-skeleton-placeholder>
+    } @else {
+        @if (u.contentAdministrator || u.userAdministrator) {
+            <a routerLink="/admin">Administration</a>
+        }
+        <a routerLink="/user/{{u.id}}" class="username">{{u.username}}</a>
+    }
+    <a routerLink="/signout">Sign out</a>
+}

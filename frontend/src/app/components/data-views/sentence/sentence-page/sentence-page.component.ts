@@ -7,7 +7,6 @@ import {SkeletonPlaceholderComponent} from '../../../general/skeleton-placeholde
 import {ProvenanceComponent} from '../../provenance/provenance.component';
 import {HistoryPropertyComponent} from '../../history-property/history-property.component';
 import {WordsTableComponent} from '../../words-table/words-table.component';
-import {SentenceSimpleComponent} from '../sentence-simple/sentence-simple.component';
 import {WordSimpleComponent} from '../../word/word-simple/word-simple.component';
 import {SentencesTableComponent} from '../../sentences-table/sentences-table.component';
 

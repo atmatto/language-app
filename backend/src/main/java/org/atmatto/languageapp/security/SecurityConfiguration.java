@@ -49,9 +49,12 @@ public class SecurityConfiguration {
 		return new JwtFilter(jwtProvider, userService);
 	}
 
-	private UrlBasedCorsConfigurationSource corsConfiguration() {
+	@Bean
+	public UrlBasedCorsConfigurationSource corsConfiguration() {
 		CorsConfiguration c = new CorsConfiguration();
 		c.setAllowedOrigins(List.of("http://localhost:4200"));
+		c.addAllowedMethod(CorsConfiguration.ALL);
+		c.addAllowedHeader(CorsConfiguration.ALL);
 		UrlBasedCorsConfigurationSource src = new UrlBasedCorsConfigurationSource();
 		src.registerCorsConfiguration("/**", c);
 		return src;

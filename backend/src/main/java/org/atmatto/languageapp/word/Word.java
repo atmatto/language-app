@@ -20,19 +20,19 @@ import java.util.Set;
 @NoArgsConstructor
 public class Word extends Content {
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
-	Word base = null;
+	private Word base = null;
 
 	@NotNull
 	@OneToMany(mappedBy = "base", fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
-	Set<Word> forms = new HashSet<>();
+	private Set<Word> forms = new HashSet<>();
 
 	@NotNull
 	@ManyToMany(mappedBy = "definitionOf", fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
-	Set<Sentence> definitions = new HashSet<>();
+	private Set<Sentence> definitions = new HashSet<>();
 
 	@NotNull
 	@ManyToMany(mappedBy = "words", fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
-	Set<Sentence> examples = new HashSet<>();
+	private Set<Sentence> examples = new HashSet<>();
 
 	public void setBase(Word w) {
 		if (w != null && Objects.equals(w.id, id)) {

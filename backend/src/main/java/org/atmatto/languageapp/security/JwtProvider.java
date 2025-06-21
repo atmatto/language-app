@@ -27,7 +27,7 @@ public class JwtProvider {
 	}
 
 	public Claims parse(String token) {
-		return parser.parseSignedClaims(token).getPayload();
+		return parser.parseSignedClaims(token).getPayload(); // TODO: Check alg=none
 	}
 
 	public String create(User user) {

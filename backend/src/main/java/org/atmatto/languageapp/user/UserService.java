@@ -3,6 +3,7 @@ package org.atmatto.languageapp.user;
 import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -23,6 +24,10 @@ public class UserService {
 		} catch (OptimisticLockingFailureException e) {
 			return Optional.empty();
 		}
+	}
+
+	public List<User> getAll() {
+		return userRepository.findAll();
 	}
 
 	public Optional<User> get(Long id) {

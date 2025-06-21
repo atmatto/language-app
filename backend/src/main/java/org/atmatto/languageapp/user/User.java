@@ -23,19 +23,19 @@ import java.util.Collection;
 public class User {
 	@Id
 	@GeneratedValue
-	Long id;
+	private Long id;
 
 	@NotNull
 	@Size(min = 3, max = 20)
 	@Column(unique = true)
-	String username;
+	private String username;
 
 	@NotBlank
-	String passwordHash;
+	private String passwordHash;
 
-	boolean reviewer = false;
-	boolean contentAdministrator = false;
-	boolean userAdministrator = false;
+	private boolean reviewer = false;
+	private boolean contentAdministrator = false;
+	private boolean userAdministrator = false;
 
 	public Collection<GrantedAuthority> getAuthorities() {
 		ArrayList<GrantedAuthority> authorities = new ArrayList<>();

@@ -1,0 +1,15 @@
+<h1>Sign in to Language App</h1>
+<form #f="ngForm" (ngSubmit)="submit(f.form.value)" ngNativeValidate>
+    <label for="username">User name</label>
+    <input type="text" id="username" name="username" ngModel required />
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" ngModel autocomplete="current-password" required />
+    <button>
+        @if (submitted()) {
+            <app-skeleton-placeholder>Sign in</app-skeleton-placeholder>
+        } @else {
+            Sign in
+        }
+    </button>
+</form>
+<p>Don't have an account? <a routerLink="/register">Register</a></p>

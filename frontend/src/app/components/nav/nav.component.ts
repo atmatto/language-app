@@ -3,11 +3,13 @@ import {ActivatedRoute, ActivatedRouteSnapshot, NavigationEnd, Router, RouterLin
 import {filter} from 'rxjs';
 import {routes} from '../../app.routes';
 import {CurrentRouteService} from '../../services/current-route.service';
+import {NavAccountComponent} from './nav-account/nav-account.component';
 
 @Component({
     selector: 'app-nav',
     imports: [
-        RouterLink
+        RouterLink,
+        NavAccountComponent
     ],
     templateUrl: './nav.component.html',
     styleUrl: './nav.component.css'
