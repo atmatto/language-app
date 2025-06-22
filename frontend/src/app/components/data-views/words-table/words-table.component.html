@@ -7,8 +7,12 @@
     <!--    <input type="text" placeholder="Search" />-->
     <!--    <button>Filter</button>-->
     <!--    <button>Hide details</button>-->
+        <button>Add</button>
+        @if (searchEnabled()) {
+            <input type="text" placeholder="Search" (change)="search($event)" />
+        }
     </app-table-control>
-    <thead app-word-row></thead>
+    <thead app-word-row [sortEnabled]="sortEnabled()" (sorted)="sorted.emit($event)"></thead>
     @if (ids === undefined) {
         <tbody app-word-row></tbody>
     } @else {

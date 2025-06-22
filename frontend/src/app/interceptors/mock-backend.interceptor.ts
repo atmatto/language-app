@@ -102,7 +102,8 @@ export const mockBackendInterceptor: HttpInterceptorFn = (req, next) => {
             return of(new HttpResponse({
                 body: body,
                 status: r.status ?? 200,
-            })).pipe(delay(500 + Math.random() * 500 + (path === "/api/languages" ? 1000 : 0)));
+            // })).pipe(delay(500 + Math.random() * 500 + (path === "/api/languages" ? 1000 : 0)));
+            })).pipe(delay(100 + Math.random() * 200));
         }
     }
     console.warn("Request not matched by mockBackendInterceptor", path, method, req);

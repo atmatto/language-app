@@ -2,7 +2,7 @@
     <tr class="header">
 <!--        <th style="width: 0;"><input type="checkbox" /></th>-->
         <th style="width: 0;">Focused word</th>
-        <th style="min-width: 300px">Sentence and translations</th>
+        <th style="min-width: 300px" [class.sortable]="sortEnabled()" (click)="sortClicked('text')">Sentence and translations {{sortIcon('text')}}</th>
     </tr>
 } @else {
     @let s = sentence();

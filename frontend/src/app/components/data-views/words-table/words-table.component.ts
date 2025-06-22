@@ -5,11 +5,12 @@ import {TableFooterComponent} from '../../general/table/table-footer/table-foote
 import {WordRowComponent} from '../word/word-row/word-row.component';
 import {Word} from '../../../model/word';
 import {EditorsService} from '../../../services/editors.service';
+import {SentenceRowComponent} from '../sentence/sentence-row/sentence-row.component';
 
 @Component({
     selector: 'app-words-table',
     imports: [
-        TableComponent, TableControlComponent, TableFooterComponent, WordRowComponent
+        TableComponent, TableControlComponent, TableFooterComponent, WordRowComponent, SentenceRowComponent
     ],
     templateUrl: './words-table.component.html',
     styleUrl: './words-table.component.css'
@@ -20,9 +21,21 @@ export class WordsTableComponent {
 
     wordIds = input<Word["id"][]>();
     wordClicked = output<Word["id"]>();
+    addClicked = output<void>();
+    searchEnabled = input<boolean>(false);
+    searched = output<string>();
+    sortEnabled = input<boolean>(false);
+    sorted = output<string>();
 
     ngOnInit() {
         // TODO: what if you are editing a word, and open it in another dialog and there are two pages referring to the same word now?
         this.wordClicked.subscribe((ev) => this.editors.editWord(ev));
+    }
+
+    protected search(event: Event) {
+        const t = event.target;
+        if (t !== null) {
+            this.searched.emit((t as HTMLInputElement).value);
+        }
     }
 }

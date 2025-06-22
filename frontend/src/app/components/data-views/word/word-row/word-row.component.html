@@ -1,10 +1,10 @@
 @if (isHeader) {
     <tr class="header">
 <!--        <th style="width: 0;"><input type="checkbox" /></th>-->
-        <th style="width: 0;">Word</th>
+        <th style="width: 0;" [class.sortable]="sortEnabled()" (click)="sortClicked('text')">Word {{sortIcon('text')}}</th>
         <th style="width: 0;">Base</th>
         <th style="min-width: 300px">Definitions</th>
-        <th style="width: 0;">Occurrences (coverage)</th>
+        <th style="width: 0;" [class.sortable]="sortEnabled()" (click)="sortClicked('occurrences')">Occurrences <!-- TODO (coverage)--> {{sortIcon('occurrences')}}</th>
     </tr>
 } @else {
     @let w = word();

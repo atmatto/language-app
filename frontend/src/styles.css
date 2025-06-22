@@ -18,6 +18,7 @@
     --topbar-bg: #f5f5f5;
     --topbar-link-bg-hover: #efefef;
     --topbar-link-bg-active: #e8e8e8;
+    --middle-bg: #f9f9f9;
     --button-fg: #2f2f31;
     --button-bg: white;
     --button-bd: #cfcfcf;
@@ -44,6 +45,7 @@
         --topbar-bg: #090909;
         --topbar-link-bg-hover: #1e1e20;
         --topbar-link-bg-active: #1b1d21;
+        --middle-bg: #090910;
         --button-fg: #e3e4e7;
         --button-bg: #1e2025;
         --button-bd: #2c2e33;

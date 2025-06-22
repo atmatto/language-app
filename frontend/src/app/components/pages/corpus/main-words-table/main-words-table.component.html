@@ -1,1 +1,3 @@
-<app-words-table [wordIds]="service.getIds()"/>
+<app-words-table [wordIds]="service.getIds()"
+                 [searchEnabled]="true" (searched)="service.setSearchQuery($event)"
+                 [sortEnabled]="true" (sorted)="service.setSortField($event)"/>

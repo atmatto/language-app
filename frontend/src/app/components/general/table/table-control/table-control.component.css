@@ -6,4 +6,14 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 8px;
+    width: 100%;
+}
+
+::ng-deep .spacer {
+    margin-left: auto;
+    margin-right: -8px;
+}
+
+::ng-deep input[type="text"] {
+    width: 300px;
 }

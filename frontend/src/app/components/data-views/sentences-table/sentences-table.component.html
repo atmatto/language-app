@@ -10,8 +10,12 @@
 <!--<div class="table-container">-->
 <app-table>
     <app-table-control>
+        <button>Add</button>
+        @if (searchEnabled()) {
+            <input type="text" placeholder="Search" (change)="search($event)" />
+        }
     </app-table-control>
-    <thead app-sentence-row></thead>
+    <thead app-sentence-row [sortEnabled]="sortEnabled()" (sorted)="sorted.emit($event)"></thead>
     @if (ids === undefined) {
         <tbody app-sentence-row></tbody>
     } @else {

@@ -1,4 +1,4 @@
-import {Component, ElementRef, inject, input, SimpleChanges} from '@angular/core';
+import {Component, ElementRef, inject, input, output, signal, SimpleChanges} from '@angular/core';
 import {SkeletonPlaceholderComponent} from '../../../general/skeleton-placeholder/skeleton-placeholder.component';
 import {WordComponent} from '../word.component';
 import {WordSimpleComponent} from "../word-simple/word-simple.component";
@@ -25,6 +25,38 @@ export class WordRowComponent extends WordComponent {
     protected isHeader = false;
     // wordId = input<Word["id"]>();
     extended = input<boolean>(false);
+
+    sortEnabled = input<boolean>(false);
+    sorted = output<string>();
+    protected sortField = signal<string>("");
+    protected sortAsc = signal<boolean>(true);
+
+    protected sortClicked(field: string) {
+        if (!this.sortEnabled())
+            return;
+
+        if (this.sortField() === field) {
+            if (this.sortAsc()) {
+                this.sortAsc.set(false);
+                this.sorted.emit("!" + field);
+            } else {
+                this.sortField.set("");
+                this.sorted.emit("");
+            }
+        } else {
+            this.sortField.set(field);
+            this.sortAsc.set(true);
+            this.sorted.emit(field);
+        }
+    }
+
+    protected sortIcon(field: string) {
+        if (this.sortField() === field) {
+            return this.sortAsc() ? "↑" : "↓";
+        } else {
+            return "";
+        }
+    }
 
     // protected words = new ComponentStore<Word["id"], Word>();
     // protected sentences = signal<{[id: Sentence["id"]]: Sentence}>({});
