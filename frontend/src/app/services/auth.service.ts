@@ -60,4 +60,8 @@ export class AuthService {
             return this.users.get(id);
         }
     }
+
+    getToken(): string | null {
+        return localStorage.getItem(TOKEN_KEY);
+    }
 }

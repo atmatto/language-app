@@ -9,11 +9,11 @@
     width: 100%;
 }
 
-::ng-deep .spacer {
+:host ::ng-deep .spacer {
     margin-left: auto;
     margin-right: -8px;
 }
 
-::ng-deep input[type="text"] {
+:host ::ng-deep input[type="text"] {
     width: 300px;
 }

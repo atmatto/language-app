@@ -1,0 +1,21 @@
+<form id="word-creator" (submit)="submit()" ngNativeValidate>
+    <header>
+        <div>
+            <app-language-picker (selected)="language.set($event)" />
+        </div>
+        <div class="buttons">
+            <button type="button" (click)="cancel()">Cancel</button>
+            <button type="submit" class="action" form="word-creator">
+                @if (submitted()) {
+                    <app-skeleton-placeholder>Create</app-skeleton-placeholder>
+                } @else {
+                    Create
+                }
+            </button>
+        </div>
+    </header>
+<!--    <h3>Language</h3>-->
+<!--    <div><app-language-picker (selected)="language.set($event)" /></div>-->
+<!--    <h3>Word</h3>-->
+    <input type="text" name="text" [(ngModel)]="text" placeholder="Word" autocomplete="off" required/>
+</form>

@@ -1,6 +1,6 @@
 export enum Provenance {
-    Manual = "manual",
-    Auto = "auto",
-    Derivative = "derivative",
-    Batch = "batch",
+    Manual = "MANUAL",
+    Auto = "AUTO",
+    Derivative = "DERIVATIVE",
+    Batch = "BATCH",
 }

@@ -112,6 +112,15 @@ button:focus-visible {
     outline: auto;
 }
 
+select {
+    color: var(--button-fg, black);
+    background: var(--input-bg, white);
+    border: 1px solid var(--button-bd, black);
+    border-radius: 5px;
+    font-size: 0.85em;
+    padding: 4px 10px;
+}
+
 input[type="text"], input[type="password"] {
     all: unset;
     color: var(--button-fg, black);
@@ -122,11 +131,11 @@ input[type="text"], input[type="password"] {
     padding: 4px 10px;
 }
 
-input[type="text"]:hover, input[type="password"]:hover {
+input[type="text"]:hover, input[type="password"]:hover, select {
     border-color: var(--input-hover-bd, grey);
 }
 
-input[type="text"]:focus, input[type="password"]:focus {
+input[type="text"]:focus, input[type="password"]:focus, select {
     border-color: var(--button-action-bg, blue);
 }
 

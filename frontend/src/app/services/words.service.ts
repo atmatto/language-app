@@ -54,4 +54,14 @@ export class WordsService {
             })
         );
     }
+
+    create(word: Partial<Word>): Observable<Word> {
+        return this.http.post<WordDeep>("/api/v1/word", word).pipe(
+            map(wd => {
+                let w = this.makeShallow(wd);
+                this.cache.words.set(w.id, w);
+                return w;
+            })
+        );
+    }
 }

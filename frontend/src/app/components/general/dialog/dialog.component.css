@@ -8,3 +8,7 @@
 :host.fullwidth {
     align-self: stretch;
 }
+
+:host:not(.fullwidth) {
+    align-self: safe center;
+}

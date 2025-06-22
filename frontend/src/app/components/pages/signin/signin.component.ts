@@ -48,7 +48,7 @@ export class SigninComponent {
                             this.overlaysService.openSimpleAlert("Failed to sign in", err.error.reason ?? "Unknown authentication error");
                             break;
                         default:
-                            this.overlaysService.openSimpleAlert("Failed to sign in", "Unknown error");
+                            this.overlaysService.openSimpleAlert("Failed to sign in", "Unexpected error");
                             console.error("Unhandled error:", err.error);
                             break;
                     }

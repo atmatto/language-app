@@ -52,7 +52,7 @@ export class RegisterComponent {
                                 this.overlaysService.openSimpleAlert("Failed to register", "Username not available");
                                 break;
                             default:
-                                this.overlaysService.openSimpleAlert("Failed to register", "Unknown error");
+                                this.overlaysService.openSimpleAlert("Failed to register", "Unexpected error");
                                 console.error("Unhandled error:", err.error);
                                 break;
                         }
@@ -70,7 +70,7 @@ export class RegisterComponent {
                                         this.overlaysService.openSimpleAlert("Registered successfully but failed to sign in", err.error.reason ?? "Unknown authentication error");
                                         break;
                                     default:
-                                        this.overlaysService.openSimpleAlert("Registered successfully but failed to sign in", "Unknown error");
+                                        this.overlaysService.openSimpleAlert("Registered successfully but failed to sign in", "Unexpected error");
                                         console.error("Unhandled error:", err.error);
                                         break;
                                 }

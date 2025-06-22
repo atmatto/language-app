@@ -29,6 +29,10 @@ export class LanguagesService {
         return this.languages()[lang]?.name;
     }
 
+    getLanguages(): Language[] {
+        return Object.values(this.languages());
+    }
+
     getIds(): Language["id"][] {
         return Object.values(this.languages()).map(l => l.id);
     }

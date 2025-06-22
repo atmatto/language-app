@@ -1,0 +1,5 @@
+<select (input)="select($event)">
+    @for (l of service.getLanguages(); track l.id) {
+        <option [value]="l.id">{{l.icon}} {{l.name}} ({{l.code}})</option>
+    }
+</select>
