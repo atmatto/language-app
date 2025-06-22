@@ -1,0 +1,11 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+:host app-languages-table {
+    flex-basis: auto;
+    min-height: 0;
+    border-width: 0 0 0 0;
+}

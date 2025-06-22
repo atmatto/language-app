@@ -1,0 +1,5 @@
+<ul>
+    @for (u of (usersService.cache.users.getMany(usersService.cache.users.getAllKeys())); track u.id) {
+        <li>{{u.username}}</li>
+    }
+</ul>

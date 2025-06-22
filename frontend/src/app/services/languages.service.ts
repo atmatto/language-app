@@ -17,11 +17,19 @@ export class LanguagesService {
         // TODO: Handle error and retry
     }
 
-    getIcon(lang: Language["id"]): string {
+    getIcon(lang: Language["id"]): string | undefined {
         return this.languages()[lang]?.icon;
     }
 
-    getName(lang: Language["id"]): string {
+    getCode(lang: Language["id"]): string | undefined {
+        return this.languages()[lang]?.code;
+    }
+
+    getName(lang: Language["id"]): string | undefined {
         return this.languages()[lang]?.name;
+    }
+
+    getIds(): Language["id"][] {
+        return Object.values(this.languages()).map(l => l.id);
     }
 }

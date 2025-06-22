@@ -1,0 +1,12 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    border: 1px solid var(--main-bd);
+}
+
+app-table {
+    border-width: 0;
+    flex-grow: 1;
+}

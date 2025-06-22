@@ -97,6 +97,7 @@ export const mockBackendInterceptor: HttpInterceptorFn = (req, next) => {
     let method = req.method;
     for (let r of responses) {
         if (r.path === path && r.method === method) {
+            console.log(`MOCK: ${method} ${path}`);
             let body = r.body;
             return of(new HttpResponse({
                 body: body,

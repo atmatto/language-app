@@ -21,9 +21,9 @@ a:active, a.active {
 }
 
 a:visited {
-    color: unset;
+    /*color: unset;*/
 }
 
 .username {
-    color: var(--dim-fg, black);
+    /*color: var(--dim-fg, black);*/
 }

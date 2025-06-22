@@ -1,0 +1,21 @@
+@let u = user();
+@if (u === undefined) {
+    <header>
+        <app-skeleton-placeholder><h2>Username</h2></app-skeleton-placeholder>
+    </header>
+    <h3>Roles</h3>
+    <app-skeleton-placeholder>User</app-skeleton-placeholder>
+} @else {
+    <header>
+        <div>
+            <h2>{{u.username}}</h2>
+        </div>
+        <div class="buttons">
+            @if (authService.getCurrentUserId() === u.id) {
+                <button>Change password</button><!-- TODO -->
+            }
+        </div>
+    </header>
+    <h3>Roles</h3>
+    <p>{{roles().join(", ")}}</p>
+}

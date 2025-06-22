@@ -39,6 +39,9 @@ export class OverlaysService {
         }
     }
 
+    // TODO: Show an alert when connection is lost (failing requests). Could possibly be implemented with an interceptor.
+    // TODO: Report 404s properly (e.g. return null).
+
     openSimpleAlert(title: String, detail: String) {
         window.alert(`${title}\n\n${detail}`); // TODO
     }

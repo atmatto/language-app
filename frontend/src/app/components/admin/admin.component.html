@@ -1,0 +1,18 @@
+<div class="frame">
+    <div class="menu">
+        <h2>Administration</h2>
+        <a routerLink="/admin/languages" [class.active]="subpage() === 'languages'" draggable="false">Languages</a>
+        <a routerLink="/admin/users" [class.active]="subpage() === 'users'" draggable="false">Users</a>
+    </div>
+    <div class="content">
+        @if (subpage() === "languages") {
+            <app-language-manager />
+        } @else if (subpage() === "users") {
+            <app-user-manager />
+        } @else if (subpage() === undefined) {
+            <app-error-page title="Administration" subtitle="Choose a module from the menu."/>
+        } @else {
+            <app-error-page title="Page not found" subtitle="We could not find the page you were looking for."/>
+        }
+    </div>
+</div>

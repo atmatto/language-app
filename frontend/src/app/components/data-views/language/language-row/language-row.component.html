@@ -1,0 +1,24 @@
+@if (isHeader) {
+    <tr class="header">
+        <!--        <th style="width: 0;"><input type="checkbox" /></th>-->
+        <th style="width: 0;">Icon</th>
+        <th style="width: 0;">Code</th>
+        <th>Name</th>
+    </tr>
+} @else {
+    @let id = languageId();
+    @if (id === undefined) {
+        <tr>
+            <td><app-skeleton-placeholder>Icon</app-skeleton-placeholder></td>
+            <td><app-skeleton-placeholder>Code</app-skeleton-placeholder></td>
+            <td><app-skeleton-placeholder>Language name</app-skeleton-placeholder></td>
+        </tr>
+    } @else {
+        <tr>
+            <!--            <td><input type="checkbox" /></td>-->
+            <td>{{languagesService.getIcon(id)}}</td>
+            <td>{{languagesService.getCode(id)}}</td>
+            <td>{{languagesService.getName(id)}}</td>
+        </tr>
+    }
+}
