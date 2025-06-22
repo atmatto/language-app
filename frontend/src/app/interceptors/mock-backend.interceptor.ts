@@ -75,21 +75,21 @@ let responses: {
     body?: string | Object,
     status?: number,
 }[] = [
-    {path: "/api/sentences", method: "GET", body: Object.values(sentences).map(s => sdeep(s))},
-    {path: "/api/words", method: "GET", body: Object.values(words).map(w => wdeep(w))},
-    {path: "/api/languages", method: "GET", body: Object.values(languages)},
+    {path: "/api/v1/sentence", method: "GET", body: Object.values(sentences).map(s => sdeep(s))},
+    {path: "/api/v1/word", method: "GET", body: Object.values(words).map(w => wdeep(w))},
+    {path: "/api/v1/language", method: "GET", body: Object.values(languages)},
 ]
 
 for (let i in sentences) {
-    responses.push({path: "/api/sentences/" + i, method: "GET", body: sdeep(sentences[i])});
+    responses.push({path: "/api/v1/sentence/" + i, method: "GET", body: sdeep(sentences[i])});
 }
 
 for (let i in words) {
-    responses.push({path: "/api/words/" + i, method: "GET", body: wdeep(words[i])});
+    responses.push({path: "/api/v1/word/" + i, method: "GET", body: wdeep(words[i])});
 }
 
 for (let i in languages) {
-    responses.push({path: "/api/languages/" + i, method: "GET", body: languages[i]});
+    responses.push({path: "/api/v1/language/" + i, method: "GET", body: languages[i]});
 }
 
 export const mockBackendInterceptor: HttpInterceptorFn = (req, next) => {

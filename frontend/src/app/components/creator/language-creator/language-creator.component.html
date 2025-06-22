@@ -1,0 +1,36 @@
+@let id = this.id();
+<form id="word-creator" (submit)="submit()" ngNativeValidate>
+    <header>
+        <div>
+            @if (id !== undefined) {
+                <button type="button" (click)="deleteLanguage()">
+                    @if (submitted()) {
+                        <app-skeleton-placeholder>Delete</app-skeleton-placeholder>
+                    } @else {
+                        Delete
+                    }
+                </button>
+            }
+        </div>
+        <div class="buttons">
+            <button type="button" (click)="cancel()">Cancel</button>
+            <button type="submit" class="action" form="word-creator">
+                @if (submitted()) {
+                    <app-skeleton-placeholder>Create</app-skeleton-placeholder>
+                } @else {
+                    @if (id === undefined) {
+                        Create
+                    } @else {
+                        Update
+                    }
+                }
+            </button>
+            </div>
+    </header>
+    <h3>Name</h3>
+    <input type="text" name="name" [(ngModel)]="name" autocomplete="off" required/>
+    <h3>Code</h3>
+    <input type="text" name="code" [(ngModel)]="code" autocomplete="off" required/>
+    <h3>Icon</h3>
+    <input type="text" name="icon" [(ngModel)]="icon" autocomplete="off" required/>
+</form>

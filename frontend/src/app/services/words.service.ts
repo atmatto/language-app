@@ -31,7 +31,7 @@ export class WordsService {
     get(id: Word["id"], refreshCache: boolean = false): Observable<Word> {
         let w = this.cache.words.get(id);
         if (w === undefined || refreshCache) {
-            return this.http.get<WordDeep>(`/api/words/${id}`).pipe(
+            return this.http.get<WordDeep>(`/api/v1/word/${id}`).pipe(
                 map(wd => {
                     let w = this.makeShallow(wd);
                     this.cache.words.set(w.id, w);
@@ -44,7 +44,7 @@ export class WordsService {
     }
 
     getAll(): Observable<Word[]> {
-        return this.http.get<WordDeep[]>(`/api/words`).pipe(
+        return this.http.get<WordDeep[]>(`/api/v1/word`).pipe(
             map(wds => {
                 return wds.map(wd => {
                     let w = this.makeShallow(wd);

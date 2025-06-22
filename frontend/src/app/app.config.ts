@@ -11,6 +11,6 @@ export const appConfig: ApplicationConfig = {
     providers: [
         provideZoneChangeDetection({ eventCoalescing: true }),
         provideRouter(routes, withComponentInputBinding()),
-        provideHttpClient(withInterceptors([apiInterceptor, authInterceptor, mockBackendInterceptor]))
+        provideHttpClient(withInterceptors([apiInterceptor, authInterceptor, /*mockBackendInterceptor*/]))
     ]
 };

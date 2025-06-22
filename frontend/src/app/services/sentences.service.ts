@@ -48,7 +48,7 @@ export class SentencesService {
     get(id: Sentence["id"], refreshCache: boolean = false): Observable<Sentence> {
         let s = this.cache.sentences.get(id);
         if (s === undefined || refreshCache) {
-            return this.http.get<SentenceDeep>(`/api/sentences/${id}`).pipe(
+            return this.http.get<SentenceDeep>(`/api/v1/sentence/${id}`).pipe(
                 map(sd => {
                     let s = this.makeShallow(sd);
                     this.cache.sentences.set(s.id, s);
@@ -61,7 +61,7 @@ export class SentencesService {
     }
 
     getAll(): Observable<Sentence[]> {
-        return this.http.get<SentenceDeep[]>(`/api/sentences`).pipe(
+        return this.http.get<SentenceDeep[]>(`/api/v1/sentence`).pipe(
             map(sds => {
                 return sds.map(sd => {
                     let s = this.makeShallow(sd);

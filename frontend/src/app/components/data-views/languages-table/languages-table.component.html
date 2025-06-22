@@ -10,6 +10,7 @@
 <!--<div class="table-container">-->
 <app-table>
     <app-table-control>
+        <button (click)="addClicked.emit()">Add</button>
     </app-table-control>
     <thead app-language-row></thead>
     @if (ids === undefined) {
