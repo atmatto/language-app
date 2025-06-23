@@ -5,6 +5,8 @@ import {map, Observable, of, Subject} from 'rxjs';
 import {WordDeep} from '../model/input/wordDeep';
 import {DataCacheService} from './data-cache.service';
 import {hpMakeShallow} from '../model/input/historyPropertyDeep';
+import {Language} from '../model/language';
+import {WordRequest} from '../model/output/wordRequest';
 
 @Injectable({
     providedIn: 'root'
@@ -91,5 +93,24 @@ export class WordsService {
                 return w;
             })
         );
+    }
+
+    update(id: Word["id"], word: Partial<WordRequest>): Observable<Word> {
+        return this.http.patch<WordDeep>(`/api/v1/word/${id}`, word).pipe(
+            map(wd => {
+                let w = this.makeShallow(wd);
+                this.cache.words.set(w.id, w);
+                return w;
+            })
+        );
+    }
+
+    delete(word: Word["id"]): Observable<void> {
+        return this.http.delete<void>(`/api/v1/word/${word}`).pipe(
+            map(() => {
+                // TODO: Update references
+                this.cache.words.delete(word);
+            })
+        )
     }
 }

@@ -28,7 +28,7 @@ export class WordsTableComponent {
 
     ngOnInit() {
         // TODO: what if you are editing a word, and open it in another dialog and there are two pages referring to the same word now?
-        this.wordClicked.subscribe((ev) => this.editors.editWord(ev));
+        this.wordClicked.subscribe((ev) => this.editors.showWord(ev));
         this.addClicked.subscribe(() => this.editors.createWord());
     }
 

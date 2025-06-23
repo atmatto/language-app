@@ -1,0 +1,53 @@
+@let id = this.id();
+<!--<form id="word-creator" (submit)="submit()" ngNativeValidate>-->
+    <header>
+        <div>
+            @if (id !== undefined) {
+                <button type="button" (click)="deleteWord()">
+                    @if (submitted()) {
+                        <app-skeleton-placeholder>Delete</app-skeleton-placeholder>
+                    } @else {
+                        Delete
+                    }
+                </button>
+            }
+        </div>
+        <div class="buttons">
+            <button type="button" (click)="cancel()">Cancel</button>
+            <button type="submit" (click)="submit()" class="action"><!--form="word-creator"-->
+                @if (submitted()) {
+                    <app-skeleton-placeholder>Create</app-skeleton-placeholder>
+                } @else {
+                    @if (id === undefined) {
+                        Create
+                    } @else {
+                        Update
+                    }
+                }
+            </button>
+            </div>
+    </header>
+    <h3>Language</h3>
+    <app-language-picker [(selected)]="language"/>
+    <h3>Word</h3>
+    <input type="text" name="text" [(ngModel)]="text" />
+    <h3>Definitions</h3>
+<!--    <app-sentences-table [sentenceIds]="definitions()" />-->
+    —
+    <h3>Base</h3>
+    —
+    <h3>Forms</h3>
+    <app-words-table [wordIds]="forms()" />
+    <h3>Examples</h3>
+    —
+    <h3>Note</h3>
+    <div class="textarea-wrapper">
+        <textarea name="note" [(ngModel)]="note"></textarea>
+    </div>
+    <h3>Provenance</h3>
+    —
+    <h3>Ignored</h3>
+    <input type="checkbox" id="ignored" name="ignored" [(ngModel)]="ignored" /> <label for="ignored"> Ignored</label>
+    <h3>Reviewed</h3>
+    <input type="checkbox" id="reviewed" name="reviewed" [(ngModel)]="reviewed" /> <label for="reviewed"> Reviewed</label>
+<!--</form>-->

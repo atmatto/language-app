@@ -10,6 +10,7 @@ import {ProvenanceComponent} from '../../provenance/provenance.component';
 import {HistoryPropertyComponent} from '../../history-property/history-property.component';
 import {SentenceSimpleComponent} from '../../sentence/sentence-simple/sentence-simple.component';
 import {SentencesTableComponent} from '../../sentences-table/sentences-table.component';
+import {EditorsService} from '../../../../services/editors.service';
 
 @Component({
     selector: 'app-word-page',
@@ -26,6 +27,7 @@ import {SentencesTableComponent} from '../../sentences-table/sentences-table.com
     styleUrl: './word-page.component.css'
 })
 export class WordPageComponent extends WordComponent {
+    protected editors = inject(EditorsService);
     protected host: ElementRef<HTMLElement> = inject(ElementRef);
 
     dialog = input<Dialog>();

@@ -8,8 +8,7 @@
             <h2>{{w.text}}</h2>
         </div>
         <div class="buttons">
-            <button>Cancel</button>
-            <button class="action">Save</button>
+            <button class="action" (click)="editors.editWord(w.id)">Edit</button>
         </div>
     </header>
     <h3>Definitions</h3>

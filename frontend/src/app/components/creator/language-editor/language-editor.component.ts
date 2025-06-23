@@ -8,15 +8,15 @@ import {LanguagePickerComponent} from '../../picker/language-picker/language-pic
 import {SkeletonPlaceholderComponent} from '../../general/skeleton-placeholder/skeleton-placeholder.component';
 
 @Component({
-  selector: 'app-language-creator',
+  selector: 'app-language-editor',
     imports: [
         FormsModule,
         SkeletonPlaceholderComponent
     ],
-  templateUrl: './language-creator.component.html',
-  styleUrl: './language-creator.component.css'
+  templateUrl: './language-editor.component.html',
+  styleUrl: './language-editor.component.css'
 })
-export class LanguageCreatorComponent {
+export class LanguageEditorComponent {
     protected languagesService = inject(LanguagesService);
     protected overlaysService = inject(OverlaysService);
 

@@ -50,7 +50,7 @@ export class WordCreatorComponent {
     protected similarSelected(id: Word["id"]) {
         if (Object.keys(this.wordPrototype()).length === 0) {
             this.dialog()?.remove.next();
-            this.editorsService.editWord(id);
+            this.editorsService.showWord(id);
         } else {
             // TODO: Link
         }
@@ -84,7 +84,7 @@ export class WordCreatorComponent {
             },
             next: w => {
                 this.dialog()?.remove.next();
-                this.editorsService.editWord(w.id);
+                this.editorsService.showWord(w.id);
             }
         });
     }

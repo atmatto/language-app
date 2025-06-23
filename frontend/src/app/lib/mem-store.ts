@@ -36,6 +36,11 @@ export class MemStore<K, V> {
         }
     }
 
+    delete(key: K): void {
+        this.objs[this.indexForce(key)] = undefined;
+        this.map.delete(key);
+    }
+
     get(key: K): V | undefined {
         let i = this.index(key);
         if (i === undefined)

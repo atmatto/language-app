@@ -30,7 +30,7 @@ export class SentencesTableComponent {
 
     ngOnInit() {
         // TODO: what if you are editing a word, and open it in another dialog and there are two pages referring to the same word now?
-        this.sentenceClicked.subscribe((ev) => this.editors.editSentence(ev));
+        this.sentenceClicked.subscribe((ev) => this.editors.showSentence(ev));
     }
 
     protected search(event: Event) {
