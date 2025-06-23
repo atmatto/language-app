@@ -1,7 +1,7 @@
 <form id="word-creator" (submit)="submit()" ngNativeValidate>
     <header>
         <div>
-            <app-language-picker (selected)="language.set($event)" />
+            <app-language-picker [(selected)]="language" />
         </div>
         <div class="buttons">
             <button type="button" (click)="cancel()">Cancel</button>
@@ -18,4 +18,7 @@
 <!--    <div><app-language-picker (selected)="language.set($event)" /></div>-->
 <!--    <h3>Word</h3>-->
     <input type="text" name="text" [(ngModel)]="text" placeholder="Word" autocomplete="off" required/>
+    <hr>
+    <h3>Similar words</h3>
+    <app-word-mini-search [query]="text()" (wordClicked)="similarSelected($event)" />
 </form>

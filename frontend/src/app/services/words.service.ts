@@ -43,14 +43,38 @@ export class WordsService {
         }
     }
 
-    getAll(): Observable<Word[]> {
+    getAll(searchQuery?: string, sortField?: string): Observable<Word[]> {
+        const query = searchQuery?.toLowerCase();
         return this.http.get<WordDeep[]>(`/api/v1/word`).pipe(
             map(wds => {
-                return wds.map(wd => {
+                let ws = wds.map(wd => {
                     let w = this.makeShallow(wd);
                     this.cache.words.set(w.id, w);
                     return w;
                 });
+                if (query !== undefined && query.length !== 0) {
+                    ws = ws.filter(w => w.text.toLowerCase().includes(query));
+                }
+                if (sortField !== undefined && sortField.length !== 0) {
+                    const reversed = sortField.startsWith("!");
+                    const field = reversed ? sortField.substring(1) : sortField;
+                    switch (field) {
+                        case "text":
+                            ws = ws.sort((a, b) => {
+                                return (reversed ? -1 : 1) * a.text.localeCompare(b.text, undefined, {sensitivity: "base"});
+                            });
+                            break;
+                        case "occurrences":
+                            ws = ws.sort((a, b) => {
+                                return (reversed ? -1 : 1) * (a.examples.length - b.examples.length);
+                            });
+                            break;
+                        default:
+                            console.error("Unknown sort field", sortField);
+                            break;
+                    }
+                }
+                return ws;
             })
         );
     }

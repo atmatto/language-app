@@ -11,7 +11,6 @@ import {SkeletonPlaceholderComponent} from '../../general/skeleton-placeholder/s
   selector: 'app-language-creator',
     imports: [
         FormsModule,
-        LanguagePickerComponent,
         SkeletonPlaceholderComponent
     ],
   templateUrl: './language-creator.component.html',

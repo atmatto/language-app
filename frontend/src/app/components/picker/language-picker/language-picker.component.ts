@@ -1,4 +1,4 @@
-import {Component, inject, output} from '@angular/core';
+import {Component, inject, input, model} from '@angular/core';
 import {LanguagesService} from '../../../services/languages.service';
 import {Language} from '../../../model/language';
 
@@ -11,18 +11,18 @@ import {Language} from '../../../model/language';
 export class LanguagePickerComponent {
     protected service = inject(LanguagesService);
 
-    selected = output<Language["id"]>();
+    selected = model<Language["id"]>();
 
     ngOnInit() {
         const def = this.service.getLanguages()[0];
         if (def !== undefined)
-            this.selected.emit(def.id);
+            this.selected.set(def.id);
     }
 
     protected select(event: Event) {
         const t = event.target;
         if (t !== null) {
-            this.selected.emit(parseInt((t as HTMLSelectElement).value));
+            this.selected.set(parseInt((t as HTMLSelectElement).value));
         }
     }
 }

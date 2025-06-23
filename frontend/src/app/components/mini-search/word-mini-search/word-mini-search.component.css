@@ -1,0 +1,17 @@
+:host {
+    display: block;
+    border: 1px solid var(--main-bd, grey);
+    padding-bottom: -1px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+:host ::ng-deep app-word-simple-row:last-child {
+    border-bottom: none;
+}
+
+.empty {
+    color: var(--dim-fg, black);
+    text-align: center;
+    padding: 6px 12px;
+}

@@ -1,0 +1,7 @@
+@if (wordIds().length === 0) {
+    <div class="empty">(empty)</div>
+} @else {
+    @for (id of wordIds(); track id) {
+        <app-word-simple-row [wordId]="id" (click)="wordClicked.emit(id)" />
+    }
+}

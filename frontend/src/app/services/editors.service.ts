@@ -19,7 +19,7 @@ export class EditorsService {
     }
 
     createWord(wordPrototype?: Partial<Word>): void {
-        this.overlays.openDialog(WordCreatorComponent, {wordPrototype});
+        this.overlays.openDialog(WordCreatorComponent, wordPrototype !== undefined ? {wordPrototype} : {});
     }
 
     editSentence(id: Sentence["id"]): void {

@@ -2,6 +2,12 @@
     display: block;
 }
 
+hr {
+    margin: 12px -12px -6px;
+    border: none;
+    border-bottom: 1px solid var(--main-bd, grey);
+}
+
 header {
     position: sticky;
     z-index: 2;

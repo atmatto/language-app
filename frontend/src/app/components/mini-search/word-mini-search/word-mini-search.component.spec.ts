@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WordSimpleComponent } from './word-simple.component';
+import { WordMiniSearchComponent } from './word-mini-search.component';
 
-describe('WordSimpleRowComponent', () => {
-  let component: WordSimpleComponent;
-  let fixture: ComponentFixture<WordSimpleComponent>;
+describe('WordMiniSearchComponent', () => {
+  let component: WordMiniSearchComponent;
+  let fixture: ComponentFixture<WordMiniSearchComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [WordSimpleComponent]
+      imports: [WordMiniSearchComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(WordSimpleComponent);
+    fixture = TestBed.createComponent(WordMiniSearchComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

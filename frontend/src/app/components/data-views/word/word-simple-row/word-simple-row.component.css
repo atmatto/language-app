@@ -1,0 +1,18 @@
+:host {
+    display: flex;
+    flex-direction: row;
+    gap: 1ch;
+    padding: 6px 12px;
+    border-bottom: 1px solid var(--main-bd, grey);
+    user-select: none;
+    cursor: pointer;
+}
+
+:host:hover {
+    background-color: var(--light-hover-bg, grey);
+}
+
+.base {
+    margin-left: auto;
+    color: var(--dim-fg, black);
+}

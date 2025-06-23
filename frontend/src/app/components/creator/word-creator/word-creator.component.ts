@@ -9,13 +9,15 @@ import {Provenance} from '../../../model/provenance';
 import {Word} from '../../../model/word';
 import {EditorsService} from '../../../services/editors.service';
 import {SkeletonPlaceholderComponent} from '../../general/skeleton-placeholder/skeleton-placeholder.component';
+import {WordMiniSearchComponent} from '../../mini-search/word-mini-search/word-mini-search.component';
 
 @Component({
   selector: 'app-word-creator',
     imports: [
         FormsModule,
         LanguagePickerComponent,
-        SkeletonPlaceholderComponent
+        SkeletonPlaceholderComponent,
+        WordMiniSearchComponent
     ],
   templateUrl: './word-creator.component.html',
   styleUrl: './word-creator.component.css'
@@ -42,6 +44,15 @@ export class WordCreatorComponent {
                 takeUntilDestroyed(this.destroyRef)
             ).subscribe(() => d.remove.next());
             // this.host.nativeElement.parentElement?.classList.add("fullwidth");
+        }
+    }
+
+    protected similarSelected(id: Word["id"]) {
+        if (Object.keys(this.wordPrototype()).length === 0) {
+            this.dialog()?.remove.next();
+            this.editorsService.editWord(id);
+        } else {
+            // TODO: Link
         }
     }
 
