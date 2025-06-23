@@ -4,6 +4,7 @@ import {SentenceDeep} from '../model/input/sentenceDeep';
 import {Sentence} from '../model/sentence';
 import {map, Observable, of} from 'rxjs';
 import {DataCacheService} from './data-cache.service';
+import {hpMakeShallow} from '../model/input/historyPropertyDeep';
 
 @Injectable({
     providedIn: 'root'
@@ -24,6 +25,9 @@ export class SentencesService {
             focus: sd.focus !== null ? sd.focus.id : null,
             translations: sd.translations.map(s => s.id),
             definitionOf: sd.definitionOf.map(w => w.id),
+            created: hpMakeShallow(sd.created, this.cache.users),
+            modified: hpMakeShallow(sd.modified, this.cache.users),
+            reviewed: sd.reviewed !== null ? hpMakeShallow(sd.reviewed, this.cache.users) : null,
         };
     }
 

@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {map, Observable, of, Subject} from 'rxjs';
 import {WordDeep} from '../model/input/wordDeep';
 import {DataCacheService} from './data-cache.service';
+import {hpMakeShallow} from '../model/input/historyPropertyDeep';
 
 @Injectable({
     providedIn: 'root'
@@ -25,6 +26,9 @@ export class WordsService {
             forms: wd.forms.map(w => w.id),
             definitions: wd.definitions.map(s => s.id),
             examples: wd.examples.map(s => s.id),
+            created: hpMakeShallow(wd.created, this.cache.users),
+            modified: hpMakeShallow(wd.modified, this.cache.users),
+            reviewed: wd.reviewed !== null ? hpMakeShallow(wd.reviewed, this.cache.users) : null,
         };
     }
 

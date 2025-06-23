@@ -2,5 +2,5 @@
 @if (v === undefined) {
     &mdash;
 } @else {
-    User: {{v.user}} Timestamp: {{v.timestamp}}
+    <app-user-simple [userId]="v.user" /> ({{timestamp()}})
 }

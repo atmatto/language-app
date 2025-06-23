@@ -10,5 +10,6 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
         });
     }
     return next(req);
-    // TODO: Handle expired token and other auth failures.
+    // TODO: Handle expired token and other auth failures. (Send a custom response header with a specific status notification?)
+    //       (and use custom headers for session extension?)
 };

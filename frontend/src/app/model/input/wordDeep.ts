@@ -1,8 +1,8 @@
 import {Sentence} from '../sentence';
-import {Content} from '../content';
 import {Word} from '../word';
+import {ContentDeep} from './contentDeep';
 
-export interface WordDeep extends Content {
+export interface WordDeep extends ContentDeep {
     base: Word | null;
     forms: Word[];
     definitions: Sentence[];

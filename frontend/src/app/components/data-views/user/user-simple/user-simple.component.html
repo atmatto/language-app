@@ -1,0 +1,6 @@
+@let u = user();
+@if (u === undefined) {
+    <app-skeleton-placeholder>Loading</app-skeleton-placeholder>
+} @else {
+    {{u.username}}
+}

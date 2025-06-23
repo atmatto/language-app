@@ -8,6 +8,7 @@ import {HistoryProperty} from '../model/history-property';
 import {WordDeep} from '../model/input/wordDeep';
 import {SentenceDeep} from '../model/input/sentenceDeep';
 
+/*
 const hp: HistoryProperty = {user: 99, timestamp: 1234};
 
 const languages: {[key: number]: Language} = {
@@ -91,9 +92,9 @@ for (let i in words) {
 for (let i in languages) {
     responses.push({path: "/api/v1/language/" + i, method: "GET", body: languages[i]});
 }
-
+*/
 export const mockBackendInterceptor: HttpInterceptorFn = (req, next) => {
-    let path = new URL(req.url).pathname;
+/*    let path = new URL(req.url).pathname;
     let method = req.method;
     for (let r of responses) {
         if (r.path === path && r.method === method) {
@@ -106,6 +107,6 @@ export const mockBackendInterceptor: HttpInterceptorFn = (req, next) => {
             })).pipe(delay(100 + Math.random() * 200));
         }
     }
-    console.warn("Request not matched by mockBackendInterceptor", path, method, req);
+    console.warn("Request not matched by mockBackendInterceptor", path, method, req);*/
     return next(req);
 };
