@@ -1,0 +1,6 @@
+<select (input)="select($event)">
+    <option [value]="Provenance.Manual" [selected]="selected() === Provenance.Manual">Manual</option>
+    <option [value]="Provenance.Derivative" [selected]="selected() === Provenance.Derivative">Derivative</option>
+    <option [value]="Provenance.Batch" [selected]="selected() === Provenance.Batch">Batch</option>
+    <option [value]="Provenance.Auto" [selected]="selected() === Provenance.Auto">Auto</option>
+</select>

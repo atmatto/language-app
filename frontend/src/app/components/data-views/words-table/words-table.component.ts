@@ -25,6 +25,7 @@ export class WordsTableComponent {
     searched = output<string>();
     sortEnabled = input<boolean>(false);
     sorted = output<string>();
+    modificationEnabled = input<boolean>(true);
 
     ngOnInit() {
         // TODO: what if you are editing a word, and open it in another dialog and there are two pages referring to the same word now?

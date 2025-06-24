@@ -9,6 +9,7 @@ import {Provenance} from '../../../model/provenance';
 import {LanguagePickerComponent} from '../../picker/language-picker/language-picker.component';
 import {SentencesTableComponent} from '../../data-views/sentences-table/sentences-table.component';
 import {WordsTableComponent} from '../../data-views/words-table/words-table.component';
+import {ProvenanceInputComponent} from '../../data-views/provenance/provenance-input/provenance-input.component';
 
 @Component({
   selector: 'app-word-editor',
@@ -18,6 +19,7 @@ import {WordsTableComponent} from '../../data-views/words-table/words-table.comp
         LanguagePickerComponent,
         forwardRef(() => SentencesTableComponent),
         forwardRef(() => WordsTableComponent),
+        ProvenanceInputComponent,
     ],
   templateUrl: './word-editor.component.html',
   styleUrl: './word-editor.component.css'

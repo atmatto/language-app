@@ -45,7 +45,7 @@
         <textarea name="note" [(ngModel)]="note"></textarea>
     </div>
     <h3>Provenance</h3>
-    —
+    <app-provenance-input [(selected)]="provenance"/>
     <h3>Ignored</h3>
     <input type="checkbox" id="ignored" name="ignored" [(ngModel)]="ignored" /> <label for="ignored"> Ignored</label>
     <h3>Reviewed</h3>

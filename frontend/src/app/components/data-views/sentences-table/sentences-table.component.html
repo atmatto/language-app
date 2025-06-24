@@ -10,7 +10,9 @@
 <!--<div class="table-container">-->
 <app-table>
     <app-table-control>
-        <button>Add</button>
+        @if (modificationEnabled()) {
+            <button>Add</button>
+        }
         @if (searchEnabled()) {
             <input type="text" placeholder="Search" (change)="search($event)" />
         }

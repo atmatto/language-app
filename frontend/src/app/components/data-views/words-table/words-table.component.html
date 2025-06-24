@@ -7,7 +7,9 @@
     <!--    <input type="text" placeholder="Search" />-->
     <!--    <button>Filter</button>-->
     <!--    <button>Hide details</button>-->
-        <button (click)="addClicked.emit()">Add</button>
+        @if (modificationEnabled()) {
+            <button (click)="addClicked.emit()">Add</button>
+        }
         @if (searchEnabled()) {
             <input type="text" placeholder="Search" (change)="search($event)" />
         }

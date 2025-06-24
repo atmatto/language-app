@@ -17,7 +17,7 @@
 <!--            <li><app-sentence-simple [sentenceId]="defId" [showFlag]="true"/></li>-->
 <!--        }-->
 <!--    </ul>-->
-    <app-sentences-table [sentenceIds]="w.definitions" />
+    <app-sentences-table [sentenceIds]="w.definitions" [modificationEnabled]="false" />
     <h3>Base</h3>
     @if (w.base === null) {
         &mdash;
@@ -25,14 +25,14 @@
         <app-word-simple [wordId]="w.base" />
     }
     <h3>Forms</h3>
-    <app-words-table [wordIds]="w.forms" />
+    <app-words-table [wordIds]="w.forms" [modificationEnabled]="false" />
     <h3>Examples</h3>
 <!--    <ul style="list-style: none; padding: 0;">-->
 <!--        @for (exampleId of w.examples; track exampleId) {-->
 <!--            <li><app-sentence-simple [sentenceId]="exampleId" [showFlag]="true"/></li>-->
 <!--        }-->
 <!--    </ul>-->
-    <app-sentences-table [sentenceIds]="w.examples" />
+    <app-sentences-table [sentenceIds]="w.examples" [modificationEnabled]="false" />
     <h3>Note</h3>
     <div class="textarea-wrapper">
         <textarea readonly>{{w.note}}</textarea>
